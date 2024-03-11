@@ -3,11 +3,11 @@ body{
     justify-content: center;
     align-items: center;
     height: 600px;
-    background-color: blueviolet;
+    background-color: rgb(216, 233, 62);
 }
 
 h1{
     size: 25px;
-    color: bisque;
+    color: black;
     text-align: center;
 }

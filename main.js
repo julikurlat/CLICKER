@@ -1,90 +1,57 @@
-let partida = Number(prompt("Ingrese el número de jugadores (1 o 2)"))
-let seguirJugando = true
+// - **Lista de tareas**
+//     - Se pueden agregar tareas, enlistar las agregadas, eliminar y al enlistar ver la actualización de las tareas existentes (es decir que no veremos las que se eliminaron)+
 
-let piedra = "1"
-let papel = "2"
-let tijera = "3"
+let tareas = []
 
-while(seguirJugando) {
-    if (partida === 2) {
-        jugador1 = prompt("Nombre del primer jugador")
-        jugador2 = prompt("Nombre del segundo jugador")
+
+while (true){
+    let accion = Number(prompt(`Seleeccione la opción que desea:
+    1. Agregar nueva tarea
+    2. Eliminar tarea
+    3. Ver lista de tareas
+    4. Salir del sistema
+    `))
+
+
+if(accion == 1){
+let nueva_tarea = prompt("Escriba la tarea que desea agregar a la lista")
+tareas.push({tarea: nueva_tarea ,orden: tareas.length + 1},)
+// console.log(tareas[tareas.length - 1].orden + "- " + tareas[tareas.length - 1].tarea)
+reordenar_lista()
+mostrar_lista_tareas()
+
+} else if (accion == 2){
+    let tarea_eliminada = Number(prompt("Escriba el número de tarea que desea eliminar de la lista"))
+    let buscar_tarea = tareas.find((tarea)=> tarea.orden == tarea_eliminada)
+    if (buscar_tarea !== undefined){
+        tareas = tareas.filter(tarea => tarea !== buscar_tarea);
+        reordenar_lista()
+        console.log(`La tarea número "${tarea_eliminada}" ha sido eliminada.`)
+    }else{
+        alert("Ese número de tarea no existe")
     }
     
-    for (let i = 1; i <= 3; i++) {
-        if (partida === 1) {
-            alert("ROUND " + i)
-            let opcionJugador = Number(prompt("Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"))
-            while(opcionJugador !== 1 && opcionJugador !== 2 && opcionJugador !== 3){
-                alert("Por favor, ingrese un número válido");
-                opcionJugador = Number(prompt("Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"))
-            }
-            let opcionElegida = obtenerOpcionTexto(opcionJugador)
-            console.log("Elegiste " + opcionElegida)
+} else if( accion == 3){
+    reordenar_lista()
+mostrar_lista_tareas()
 
-            let opcionMaquina = Math.floor(Math.random() * 3) + 1
-            maquina(opcionMaquina)
-
-            if (opcionMaquina == opcionJugador) {
-                console.log("Empate en el round " + i + " 👀")
-            } else if ((opcionMaquina == 1 && opcionJugador == papel) ||
-                       (opcionMaquina == 2 && opcionJugador == tijera) ||
-                       (opcionMaquina == 3 && opcionJugador == piedra)) {
-                console.log("Ganaste el round " + i + " 🤩")
-            } else {
-                console.log("Perdiste el round " + i + " 😔")
-            }
-        } else if (partida === 2) {
-            alert("ROUND " + i);
-            let opcionJugador1 = Number(prompt(jugador1 + ": Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"));
-            while(opcionJugador1 !== 1 && opcionJugador1 !== 2 && opcionJugador1 !== 3){
-                alert("Por favor, ingrese un número válido")
-                opcionJugador1 = Number(prompt(jugador1 + ": Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"));
-            }
-            let opcionJugador2 = Number(prompt(jugador2 + ": Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"));
-            while(opcionJugador2 !== 1 && opcionJugador2 !== 2 && opcionJugador2 !== 3){
-                alert("Por favor, ingrese un número válido")
-                opcionJugador2 = Number(prompt(jugador2 + ": Ingrese:\n1. Piedra\n2. Papel\n3. Tijera"));
-            }
-            let opcion1 = obtenerOpcionTexto(opcionJugador1)
-            let opcion2 = obtenerOpcionTexto(opcionJugador2)
-            console.log(jugador1 + " eligió " + opcion1)
-            console.log(jugador2 + " eligió " + opcion2)
-            if (opcionJugador1 === opcionJugador2) {
-                console.log("Empate en el round " + i + " 👀");
-            } else if ((opcionJugador1 === 1 && opcionJugador2 === 2) ||
-                       (opcionJugador1 === 2 && opcionJugador2 === 3) ||
-                       (opcionJugador1 === 3 && opcionJugador2 === 1)) {
-                console.log(jugador1 + " ganó el round " + i + " 🤩")
-            } else {
-                console.log(jugador2 + " ganó el round " + i + " 😔")
-            }
-        } else {
-            alert("Por favor, ingrese un número válido")
-            break;
-        }
-    }
-    seguirJugando = confirm("¿Quieres volver a jugar?")
+} else if (accion == 4){
+    break
+} else {
+alert("Elija una de las opciones existentes")
+}
 }
 
-function obtenerOpcionTexto(opcionJugador) {
-    if (opcionJugador === 1) {
-        return "piedra";
-    } else if (opcionJugador === 2) {
-        return "papel";
-    } else if (opcionJugador === 3) {
-        return "tijera";
-    } else {
-        return "opción inválida";
-    }
+
+function mostrar_lista_tareas() {
+    console.log("Lista de tareas:")
+    tareas.forEach(tarea => {
+        console.log(`${tarea.orden} - ${tarea.tarea}`);
+    })
 }
 
-function maquina(opcionMaquina) {
-    if (opcionMaquina === 1) {
-        console.log("El contrincante eligió piedra");
-    } else if (opcionMaquina === 2) {
-        console.log("El contrincante eligió papel");
-    } else {
-        console.log("El contrincante eligió tijera");
+function reordenar_lista(){
+    for (let i = 0; i < tareas.length; i++) {
+        tareas[i].orden = i + 1;
     }
 }
