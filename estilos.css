@@ -1,13 +1,240 @@
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 600px;
-    background-color: rgb(216, 233, 62);
+:root {
+    --color1: rgb(64, 184, 110);
+    --color2: rgb(13, 37, 90);
+    --color3: rgba(29, 70, 206, 0.795);
+    /* --color4 : rgb(52, 207, 31); */
+    --color4: yellowgreen;
+
 }
 
-h1{
-    size: 25px;
+* {
+    /* font-family: monsters inc; */
+    font-family: grobold;
+    font-weight: 10;
+
+}
+
+
+body {
+    height: 100vh;
+    overflow-y: hidden;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: var(--color4);
+}
+
+h1 {
+    font-size: 2vw;
     color: black;
     text-align: center;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+}
+
+
+.columnas {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+
+
+.juego {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-image: url(./img/fxvT.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-size: 100%;
+
+}
+
+.org_texto {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3vw;
+    padding-top: 1vw;
+    /* background-color: #74f81c8e; */
+    background-color: rgba(139, 183, 221, 0.521);
+    width: 100%;
+
+}
+
+h2 {
+    font-size: 2.5vw;
+    color: white;
+    text-align: center;
+    margin: 20px;
+    margin-top: 0;
+    -webkit-text-stroke: 0.20vw black;
+    background-color: var(--color4);
+    width: 100%;
+    padding: 5px;
+}
+
+#perseg {
+    font-size: 1.4vw;
+    color: rgb(230, 230, 230);
+    text-align: center;
+    margin-top: 1.5vw;
+    margin: 1px;
+    -webkit-text-stroke: 0.13vw black;
+}
+
+
+.mike {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140vh;
+    margin-bottom: -4vh;
+    transition: transform 0.06s ease-in-out;
+}
+
+
+.mike:active {
+    transform: scale(1.1);
+}
+
+.juego img {
+    height: 20vw;
+    width: 20vw;
+    cursor: pointer;
+}
+
+#perclick {
+    font-size: 1.5vw;
+    color: rgb(230, 230, 230);
+    text-align: center;
+    /* margin-top: .3vw; */
+    margin-bottom: 5vw;
+    -webkit-text-stroke: 0.12vw black;
+    border-radius: 2px;
+    border-color: var(--color4);
+}
+
+.tienda {
+    width: 30%;
+    background-color: var(--color3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1vw;
+    flex-wrap: nowrap;
+    -webkit-box-shadow: -17px 30px 76px -6px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: -17px 30px 76px -6px rgba(0, 0, 0, 0.62);
+    box-shadow: -17px 30px 76px -6px rgba(0, 0, 0, 0.62);
+    overflow-y: scroll;
+    margin-bottom: 1vw;
+
+}
+
+
+::-webkit-scrollbar {
+    width: .5vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color2);
+    border-radius: 6px;
+}
+
+
+.titulo_tienda {
+    /* font-family: monsters inc;
+    font-weight: 50; */
+    font-size: 1.7vw;
+    margin: 0.7vw;
+    padding: 0;
+}
+
+
+
+.comprable {
+    height: 6vw;
+    width: 100%;
+    margin: 0.5vw;
+    background-color: var(--color4);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* opacity: 0.5; */
+    -webkit-box-shadow: 22px 34px 85px -20px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 22px 34px 85px -20px rgba(0, 0, 0, 1);
+    box-shadow: 22px 34px 85px -20px rgba(0, 0, 0, 1);
+    ;
+    border: 2px solid #000;
+    border-color: black;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.411);
+}
+
+.comprable img {
+    /* padding-top: 10px; */
+    height: 5vw;
+    width: 5vw;
+    margin-left: -2.7vw;
+
+}
+
+.textos {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.textos h3 {
+    padding: 0;
+    margin: 3%;
+    width: 100%;
+    font-size: 1.5vw;
+}
+
+
+.textos h4 {
+    font-size: 0.9vw;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.textos h5 {
+
+    font-size: 1.2vw;
+    width: 100%;
+    padding: 0;
+    margin: 6%;
+    margin-bottom: 0.5vw;
+
+}
+
+h6 {
+    text-align: right;
+    font-size: 3vw;
+}
+
+
+.bloqueado {
+    filter: grayscale(80%);
+}
+
+.imagen_bloqueada {
+    filter: contrast(0%);
 }
