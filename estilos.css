@@ -11,6 +11,7 @@
     /* font-family: monsters inc; */
     font-family: grobold;
     font-weight: 10;
+    
 
 }
 
@@ -66,6 +67,7 @@ h1 {
     justify-content: center;
     margin-top: 3vw;
     padding-top: 1vw;
+    padding-bottom: .5vw;
     /* background-color: #74f81c8e; */
     background-color: rgba(139, 183, 221, 0.521);
     width: 100%;
@@ -77,7 +79,7 @@ h2 {
     color: white;
     text-align: center;
     margin: 20px;
-    margin-top: 0;
+    margin-bottom: 0vw;
     -webkit-text-stroke: 0.20vw black;
     background-color: var(--color4);
     width: 100%;
@@ -88,8 +90,9 @@ h2 {
     font-size: 1.4vw;
     color: rgb(230, 230, 230);
     text-align: center;
-    margin-top: 1.5vw;
-    margin: 1px;
+    margin-top: .5vw;
+    margin-bottom: 0;
+    /* margin: 1px; */
     -webkit-text-stroke: 0.13vw black;
 }
 
