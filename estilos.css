@@ -6,9 +6,11 @@
     --color4: yellowgreen;
 
 }
+@font-face { font-family: GROBOLD; src: url('https://www.mediafont.com/storage/contents/9886/font.eot'); src: local('GROBOLD'), url('https://www.mediafont.com/storage/contents/9886/GROBOLD.ttf'); }
+
 
 * {
-    font-family: grobold;
+    font-family: GROBOLD;
     font-weight: 10;
     
 
@@ -87,6 +89,7 @@ h2 {
     text-align: center;
     margin-top: 0.5vw;
     margin-bottom: 0;
+
     -webkit-text-stroke: 0.13vw black;
 }
 
