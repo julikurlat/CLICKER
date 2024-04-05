@@ -1,5 +1,6 @@
 
 
+
 class Comprable {
     constructor(nombre, precio, nivel, beneficio, img) {
         this.nombre = nombre;
@@ -18,6 +19,59 @@ let monedas_perseg = 0.5;
 let monedas_perclick = 1
 
 
+function guardarDatos() {
+    let datos = {
+        monedas: monedas,
+        monedas_perclick: monedas_perclick,
+        monedas_perseg: monedas_perseg,
+        potenciadores: potenciadores.map(p => ({ nombre: p.nombre, nivel: p.nivel, bloqueado: p.bloqueado }))
+    };
+
+    potenciadores.forEach((potenciador, i) => {
+        localStorage.setItem(`potenciador_${i}`, JSON.stringify(potenciador));
+    });
+
+    localStorage.setItem('datos', JSON.stringify(datos));
+}
+
+function cargarDatos() {
+    let datosGuardados = JSON.parse(localStorage.getItem('datos'));
+
+    if (datosGuardados) {
+        monedas = datosGuardados.monedas || 0;
+        monedas_perclick = datosGuardados.monedas_perclick || 0;
+        monedas_perseg = datosGuardados.monedas_perseg || 0;
+
+        datosGuardados.potenciadores.forEach((potenciador, i) => {
+            let potenciadorGuardado = JSON.parse(localStorage.getItem(`potenciador_${i}`));
+            if (potenciadorGuardado) {
+                potenciadores[i] = potenciadorGuardado;
+            }
+        });
+
+        actualizarInterfaz();
+    }
+}
+
+function actualizarInterfaz() {
+    // potenciadores.forEach(potenciador => {
+    //     if (potenciador.nodo) { 
+    //         if (potenciador.bloqueado) {
+    //             potenciador.nodo.classList.add('bloqueado');
+    //             potenciador.nodo.classList.remove('btn');
+    //         } else {
+    //             potenciador.nodo.classList.remove('bloqueado');
+    //             potenciador.nodo.classList.add('btn');
+    //         }
+    //     }
+    // });
+
+    h2.innerText = "$ " + monedas.toFixed(2);
+    perseg.innerText = "$ " + monedas_perseg + ` por segundo`;
+    perclick.innerText = "CLICK POWER: + $" + monedas_perclick;
+    habilitar_potenciador(monedas);
+}
+
 let potenciadores = [
     new Comprable(`CURSOR`, 80, 0, "+1 por click", "./img/cursor.png"),  //80
     new Comprable(`AUTOCLICK`, 200, 0, "+1 por segundo", "./img/reloj.png"), //200
@@ -34,8 +88,7 @@ let perseg = document.querySelector(`#perseg`);
 let perclick = document.querySelector(`#perclick`);
 let section_tienda = document.querySelector(`.tienda`);
 
-
-
+cargarDatos()
 
 setInterval(() => {
     perseg.innerText = "$ " + monedas_perseg + ` por segundo`;
@@ -43,13 +96,14 @@ setInterval(() => {
     monedas += monedas_perseg;
     h2.innerText = "$ " + monedas.toFixed(2);
     habilitar_potenciador(monedas)
-
+    guardarDatos()
 }, 1000);
 
 btn_principal.addEventListener(`click`, () => {
     monedas += monedas_perclick;
     h2.innerText = "$ " + monedas.toFixed(2);
     habilitar_potenciador(monedas)
+    guardarDatos()
 });
 
 
@@ -60,11 +114,9 @@ potenciadores.forEach((potenciador) => {
     clon.id = potenciador.nombre;
 
     section_tienda.appendChild(clon);
-    potenciador.nodo = document.querySelector(`#${potenciador.nombre}`)
-
+    
+    potenciador.nodo = document.querySelector(`#${potenciador.nombre}`);
 })
-
-
 
 function habilitar_potenciador(cant_monedas) {
     pot_habilitados = potenciadores.filter((elm) => elm.precio < cant_monedas && elm.bloqueado)
@@ -119,12 +171,13 @@ function habilitar_potenciador(cant_monedas) {
                     perseg.innerText = "$ " + monedas_perseg + ` por segundo`;
                 }
 
-
+                guardarDatos()
             }
+            
 
 
         });
-
+        guardarDatos()
         setInterval(() => {
             if (elm.precio > monedas) {
                 elm.nodo.classList.add(`bloqueado`);
