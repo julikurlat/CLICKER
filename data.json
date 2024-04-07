@@ -1,0 +1,54 @@
+{
+    "potenciadores" : [ 
+        {
+        "nombre": "CURSOR",
+        "precio": 80,
+        "nivel": 0,
+        "beneficio": "+1 por click",
+        "img": "./img/cursor.png"
+    },
+    {
+        "nombre": "AUTOCLICK",
+        "precio": 200,
+        "nivel": 0,
+        "beneficio": "+1 por segundo",
+        "img": "./img/reloj.png"
+    },
+    {
+        "nombre": "SULLIVAN",
+        "precio": 400,
+        "nivel": 0,
+        "beneficio": "+5 por click",
+        "img": "./img/sulivan.png"
+    },
+    {
+        "nombre": "RANDAL",
+        "precio": 800,
+        "nivel": 0,
+        "beneficio": "+5 por segundo",
+        "img": "./img/randal.png"
+    },
+    {
+        "nombre": "ROZ",
+        "precio": 1500,
+        "nivel": 0,
+        "beneficio": "+50 por click",
+        "img": "./img/roz.png"
+    },
+    {
+        "nombre": "CELIA",
+        "precio": 3000,
+        "nivel": 0,
+        "beneficio": "+50 por segundo",
+        "img": "./img/celia.png"
+    },
+    {
+        "nombre": "BOO",
+        "precio": 5000,
+        "nivel": 0,
+        "beneficio": "+100 por segundo",
+        "img": "./img/boo.png"
+    }
+]
+}
+
